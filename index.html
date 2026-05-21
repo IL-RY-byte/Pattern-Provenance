@@ -2428,7 +2428,7 @@
         <div class="how-step-ghost">iii</div>
         <div class="how-step-label">Step 03</div>
         <h3>Print on<br>J850</h3>
-        <p>PolyJet J850 or TPU FDM. 30 mm tile, ~1.2 g material. Reed-Solomon parity ensures the codec survives 40 % surface wear before read degrades.</p>
+        <p>PolyJet J850. 30 mm tile, ~1.2 g material. Reed-Solomon parity ensures the codec survives 40 % surface wear before read degrades.</p>
       </div>
       <div class="how-step">
         <div class="how-step-ghost">iv</div>
@@ -2642,7 +2642,7 @@
           <div class="corner bl"></div><div class="corner br"></div>
           <canvas id="canvas-3d-motif" class="preview-canvas"></canvas>
           <div class="motif-overlay-svg" id="motif-overlay-svg"></div>
-          <div class="scale-bar"><div>30 mm dia.</div><div class="bar"></div><div>~1.2g TPU 95A</div></div>
+          
           <div class="preview-meta">
             <strong id="motif-meta-id">—</strong> · <span id="motif-meta-name" class="accent">—</span>
           </div>
@@ -2691,7 +2691,7 @@
           <div class="corner tl"></div><div class="corner tr"></div>
           <div class="corner bl"></div><div class="corner br"></div>
           <canvas id="canvas-3d-parametric" class="preview-canvas"></canvas>
-          <div class="scale-bar"><div>30 mm dia.</div><div class="bar"></div><div>~1.2g TPU 95A</div></div>
+         
           <div class="preview-meta">
             <strong id="meta-id">—</strong> · <span id="meta-family" class="accent">—</span> · <span id="meta-protrusions">—</span>
           </div>
@@ -2978,7 +2978,7 @@
       <div class="order-step" data-step="3">
         <div class="num">03</div>
         <h4>Print &amp; receive</h4>
-        <p>Send .stl to atelier print service or local TPU 95A printer. Tile arrives as a flexible disc, ready to stitch.</p>
+        <p>Send .stl to atelier print service or local printer. Tile arrives as a flexible disc, ready to stitch.</p>
         <div class="meta" id="order-step-3-meta">Awaiting</div>
       </div>
       <div class="order-step" data-step="4">
@@ -3000,12 +3000,6 @@
         <p id="order-narrative">An identifier has been minted. When you're ready, generate the STL, send it to the print service, and stitch the resulting tile to your garment. The first scan activates the registry entry — and from then on, the pattern is the provenance.</p>
       </div>
       <div class="figures">
-        <div class="fig"><strong>Tile</strong><span class="v">30 mm Ø</span></div>
-        <div class="fig"><strong>Profile</strong><span class="v">2.5 mm tall</span></div>
-        <div class="fig"><strong>Material</strong><span class="v">TPU 95A</span></div>
-        <div class="fig"><strong>Mass</strong><span class="v">~1.2 g</span></div>
-        <div class="fig"><strong>Lead time</strong><span class="v">3–5 days</span></div>
-        <div class="fig"><strong>Cost</strong><span class="v">€18 incl.</span></div>
       </div>
     </div>
 
@@ -3013,14 +3007,13 @@
     <div class="print-spec">
       <div class="print-spec-header">
         <h3>Manufacturing notes</h3>
-        <span class="print-spec-tag">FDM · TPU 95A · 0.4 mm nozzle</span>
       </div>
       <div class="print-spec-grid">
         <div class="print-spec-block">
           <div class="ps-label">Geometry</div>
           <div class="ps-row"><span>Diameter</span><strong>30 mm</strong></div>
           <div class="ps-row"><span>Base thickness</span><strong>1.5 mm</strong></div>
-          <div class="ps-row"><span>Total profile</span><strong>2.5 mm</strong></div>
+          <div class="ps-row"><span>Total profile</span><strong>2.0 mm</strong></div>
           <div class="ps-row"><span>Relief range</span><strong>0.4 – 1.0 mm</strong></div>
           <div class="ps-row"><span>Engraving depth</span><strong>0.7 mm</strong></div>
           <div class="ps-row"><span>RS rim markers</span><strong>32 × Ø 1.2 mm</strong></div>
@@ -3035,13 +3028,6 @@
           <div class="ps-row"><span>Print time</span><strong>~14 min</strong></div>
         </div>
         <div class="print-spec-block">
-          <div class="ps-label">Material &amp; durability</div>
-          <div class="ps-row"><span>Filament</span><strong>TPU 95A · cream</strong></div>
-          <div class="ps-row"><span>Shore hardness</span><strong>95A (semi-rigid)</strong></div>
-          <div class="ps-row"><span>Bend radius</span><strong>5 mm safe</strong></div>
-          <div class="ps-row"><span>Wash cycles</span><strong>200+ at 30 °C</strong></div>
-          <div class="ps-row"><span>UV resistance</span><strong>good (interior)</strong></div>
-          <div class="ps-row"><span>Iron resistance</span><strong>up to 110 °C</strong></div>
         </div>
         <div class="print-spec-block">
           <div class="ps-label">Stitching guide</div>
@@ -3054,7 +3040,7 @@
         </div>
       </div>
       <p class="print-spec-footer">
-        These specifications produce a tile that is comfortable against skin, safe for normal laundry, and reads under raking light at arm's length. The codec was designed around what TPU 95A can actually print at 0.4&nbsp;mm nozzle resolution — every dimension is at least 1.5× the minimum feature size, and no layer exceeds 0.2&nbsp;mm of overhang without support.
+        These specifications produce a tile that is comfortable against skin, safe for normal laundry, and reads under raking light at arm's length. The codec was designed around can actually print at 0.4&nbsp;mm nozzle resolution — every dimension is at least 1.5× the minimum feature size, and no layer exceeds 0.2&nbsp;mm of overhang without support.
       </p>
     </div>
   </section>
@@ -4939,8 +4925,8 @@ function updateOrderUI() {
   const narratives = [
     '',
     'An identifier has been minted. When you\'re ready, generate the STL, send it to the print service, and stitch the resulting tile to your garment.',
-    `STL ready for ${fmtId(id)}. The atelier dispatches the file to the print service or your local TPU 95A printer. ~600 KB, ~1.2 g of material per tile.`,
-    'Your tile is in transit. Most workshops finish a TPU 95A pattern within 24 hours; postage adds 2–4 days. Inspect it under a raking light — the relief should read as a constellation of small bumps.',
+    `STL ready for ${fmtId(id)}. The atelier dispatches the file to the print service or your local printer. ~600 KB, ~1.2 g of material per tile.`,
+    'Your tile is in transit. Most workshops finish a pattern within 24 hours; postage adds 2–4 days. Inspect it under a raking light — the relief should read as a constellation of small bumps.',
     'Stitch the tile to a discreet seam. Open the scanner, point at the tile. The first successful read activates the registry entry — and from then on, the pattern is the provenance.',
   ];
   $('order-narrative').textContent = narratives[orderStep];
