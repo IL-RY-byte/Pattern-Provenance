@@ -6,7 +6,7 @@
 <title>Second-Life Couture — Atelier</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
   :root {
@@ -59,8 +59,9 @@
 
   /* ========== MASTHEAD ========== */
   .masthead {
+    border-top: 0.5px solid var(--rule);
     border-bottom: 1.5px solid var(--ink);
-    padding-bottom: 18px;
+    padding: 32px 0 18px;
     margin-bottom: 24px;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -1279,10 +1280,1303 @@
   @media (max-width: 560px) {
     .order-flow { grid-template-columns: 1fr; }
   }
+
+  /* ========== LANDING HERO ========== */
+  .landing { position: relative; z-index: 2; }
+  .landing-hero {
+    min-height: 100vh;
+    background: #f0e6d4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 7vw;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .landing-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 75% 50%, rgba(184,71,43,0.06) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(38px, 5vw, 68px);
+    line-height: 1.06;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+  .hero-headline em { color: var(--accent); font-style: italic; }
+  .hero-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+    max-width: 460px;
+    font-weight: 400;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-hero-primary {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 15px 26px;
+    background: var(--accent);
+    border: 1.5px solid var(--accent);
+    color: var(--paper);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-hero-primary:hover { background: var(--accent-dim); border-color: var(--accent-dim); }
+  .btn-hero-ghost {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 15px 26px;
+    background: transparent;
+    border: 1.5px solid rgba(21,17,11,0.2);
+    color: rgba(21,17,11,0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-hero-ghost:hover { border-color: rgba(21,17,11,0.65); color: var(--ink); }
+  .hero-visual { display: flex; align-items: center; justify-content: center; }
+  .hero-medallion-wrap { width: min(400px, 38vw); height: min(400px, 38vw); }
+  .hero-medallion-wrap svg { width: 100%; height: 100%; }
+
+  /* ========== SHARED LANDING LAYOUT ========== */
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .section-intro-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: end;
+    gap: 48px;
+    margin-bottom: 60px;
+    padding-bottom: 24px;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .section-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    max-width: 440px;
+    font-weight: 400;
+  }
+
+  /* ========== CONCEPT PHOTO LAYOUT ========== */
+  /* Full-width photo + prices strip */
+  .concept-full-wrap {
+    border: 1px solid var(--rule);
+    border-bottom: none;
+    overflow: hidden;
+    line-height: 0;
+    background: var(--paper-dark);
+  }
+  .concept-full-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 90vh;
+    object-fit: contain;
+    object-position: center top;
+  }
+  .concept-prices-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .concept-price-item {
+    background: var(--paper);
+    padding: 22px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: background 0.18s;
+  }
+  .concept-price-item:hover { background: var(--paper-dark); }
+  .cpi-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .cpi-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .cpi-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+
+  /* Bridge → Atelier transition */
+  .landing-bridge {
+    background: var(--paper-dark);
+    padding: 80px 7vw 0;
+    position: relative;
+    z-index: 2;
+  }
+  .bridge-layout {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 60px;
+    align-items: center;
+    padding-bottom: 72px;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .bridge-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.06;
+    margin-bottom: 16px;
+  }
+  .bridge-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 32px;
+    max-width: 420px;
+  }
+  .bridge-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .bridge-price-list { display: flex; flex-direction: column; gap: 2px; }
+  .bridge-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 16px;
+    background: var(--paper);
+    border: 0.5px solid var(--rule);
+    gap: 16px;
+  }
+  .bridge-price-row-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink);
+  }
+  .bridge-price-row-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+  /* The "enter atelier" bar at the bottom of bridge */
+  .bridge-atelier-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 0;
+    gap: 24px;
+  }
+  .bridge-atelier-left {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+  }
+  .bridge-atelier-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .bridge-atelier-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink-soft);
+  }
+  .bridge-atelier-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ========== CONCEPT SHOWCASE ========== */
+  .landing-concept {
+    background: var(--paper);
+    padding: 100px 7vw;
+    position: relative;
+    z-index: 2;
+  }
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .concept-card {
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s;
+  }
+  .concept-card:hover { background: var(--paper-dark); }
+  .concept-card-visual {
+    aspect-ratio: 3/4;
+    position: relative;
+    background: linear-gradient(160deg, var(--paper-dark) 0%, var(--paper-deeper) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .concept-card-visual svg { width: 65%; height: 65%; }
+  .concept-medallion {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+  }
+  .concept-medallion svg { width: 100%; height: 100%; }
+  .concept-card-body {
+    padding: 20px 24px 26px;
+    border-top: 0.5px solid var(--rule);
+  }
+  .concept-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .concept-card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+  }
+  .concept-card-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+  }
+  .concept-placement {
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-style: italic;
+    margin-top: 5px;
+  }
+
+  /* ========== HOW IT WORKS ========== */
+  .landing-how {
+    background: var(--paper-dark);
+    padding: 100px 7vw;
+    position: relative;
+    z-index: 2;
+  }
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  .how-step {
+    position: relative;
+    padding-top: 36px;
+    border-top: 1px solid var(--ink);
+  }
+  .how-step-ghost {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 60px;
+    line-height: 0.9;
+    color: var(--paper-deeper);
+    position: absolute;
+    top: -8px;
+    right: 0;
+    font-weight: 400;
+    pointer-events: none;
+    user-select: none;
+  }
+  .how-step-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .how-step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .how-step p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  /* ========== DESIGN STUDIO ========== */
+  .landing-studio {
+    background: #1e1a12;
+    padding: 100px 7vw;
+    position: relative;
+    z-index: 2;
+  }
+  .studio-section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(184,71,43,0.8);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .studio-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 500;
+    color: var(--paper);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .studio-section-title em { color: var(--accent); }
+  .studio-section-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: rgba(244,237,224,0.6);
+    line-height: 1.7;
+    max-width: 440px;
+    margin-bottom: 56px;
+  }
+  .studio-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .studio-prompt-area { position: sticky; top: 32px; }
+  .studio-field-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(196,184,158,0.4);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .studio-api-input {
+    width: 100%;
+    background: rgba(244,237,224,0.03);
+    border: none;
+    border-bottom: 1px solid rgba(196,184,158,0.2);
+    color: rgba(196,184,158,0.65);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 10px 2px;
+    outline: none;
+    margin-bottom: 20px;
+  }
+  .studio-api-input::placeholder { color: rgba(196,184,158,0.22); }
+  .studio-textarea {
+    width: 100%;
+    background: rgba(244,237,224,0.04);
+    border: 1px solid rgba(196,184,158,0.15);
+    color: rgba(244,237,224,0.85);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.6;
+    padding: 18px 20px;
+    resize: none;
+    outline: none;
+    min-height: 130px;
+    transition: border-color 0.2s;
+    margin-bottom: 12px;
+  }
+  .studio-textarea::placeholder { color: rgba(244,237,224,0.2); }
+  .studio-textarea:focus { border-color: rgba(196,184,158,0.35); }
+  .studio-starters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 20px;
+  }
+  .studio-starter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 7px 11px;
+    border: 0.5px solid rgba(196,184,158,0.18);
+    background: transparent;
+    color: rgba(196,184,158,0.45);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .studio-starter:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-generate {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    background: var(--accent);
+    border: 1.5px solid var(--accent);
+    color: var(--paper);
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+  }
+  .btn-generate:hover:not(:disabled) { background: var(--accent-dim); border-color: var(--accent-dim); }
+  .btn-generate:disabled { opacity: 0.4; cursor: not-allowed; }
+  .studio-result { min-height: 320px; }
+  .studio-result-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 360px;
+    color: rgba(196,184,158,0.18);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    border: 1px solid rgba(196,184,158,0.07);
+    text-align: center;
+    padding: 40px;
+  }
+  .studio-card { border: 1px solid rgba(196,184,158,0.12); background: rgba(244,237,224,0.02); }
+  .studio-card-header {
+    padding: 18px 22px 14px;
+    border-bottom: 0.5px solid rgba(196,184,158,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 14px;
+  }
+  .studio-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: var(--paper);
+    line-height: 1.1;
+  }
+  .studio-card-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 4px 8px;
+    border: 0.5px solid var(--accent);
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .studio-medallion-row {
+    display: flex;
+    gap: 18px;
+    padding: 22px;
+    align-items: start;
+  }
+  .studio-medallion-main { width: 176px; height: 176px; flex-shrink: 0; }
+  .studio-medallion-main svg { width: 100%; height: 100%; }
+  .studio-spec { flex: 1; }
+  .studio-spec-row {
+    display: flex;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 0.5px solid rgba(196,184,158,0.07);
+  }
+  .studio-spec-key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(196,184,158,0.35);
+    min-width: 72px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+  .studio-spec-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(244,237,224,0.7);
+    line-height: 1.4;
+  }
+  .studio-narrative {
+    padding: 14px 22px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(244,237,224,0.4);
+    line-height: 1.6;
+    border-top: 0.5px solid rgba(196,184,158,0.08);
+  }
+  .studio-mockups {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(196,184,158,0.07);
+    border-top: 0.5px solid rgba(196,184,158,0.1);
+  }
+  .studio-mockup-item {
+    background: #1e1a12;
+    padding: 20px 14px 16px;
+    text-align: center;
+  }
+  .studio-mockup-item svg { width: 100%; max-width: 110px; height: auto; }
+  .studio-mockup-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(196,184,158,0.28);
+    margin-top: 10px;
+  }
+  .studio-error {
+    padding: 22px 24px;
+    border: 1px solid rgba(184,71,43,0.28);
+    background: rgba(184,71,43,0.04);
+    color: rgba(184,71,43,0.75);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+  }
+
+  /* ========== IMPACT METRICS ========== */
+  .landing-impact {
+    background: var(--paper);
+    padding: 100px 7vw;
+    position: relative;
+    z-index: 2;
+  }
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 60px;
+  }
+  .impact-cell {
+    background: var(--paper);
+    padding: 40px 34px;
+    position: relative;
+    overflow: hidden;
+  }
+  .impact-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(40px, 5vw, 60px);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .impact-val em { color: var(--accent); font-style: inherit; }
+  .impact-unit {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .impact-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 260px;
+    font-weight: 400;
+  }
+  .impact-cell::after {
+    content: attr(data-ghost);
+    position: absolute;
+    bottom: -18px;
+    right: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 110px;
+    color: rgba(196,184,158,0.14);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ========== SHOP CTA ========== */
+  .landing-cta {
+    background: var(--accent);
+    padding: 100px 7vw;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+  .landing-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 50%, rgba(0,0,0,0.14) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .cta-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+  }
+  .cta-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(34px, 4.5vw, 58px);
+    font-weight: 500;
+    color: var(--paper);
+    line-height: 1.06;
+    margin-bottom: 18px;
+  }
+  .cta-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: rgba(244,237,224,0.75);
+    line-height: 1.65;
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+  .btn-waitlist {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 18px 28px;
+    background: var(--paper);
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  .btn-waitlist:hover { background: var(--paper-dark); }
+  .btn-open-atelier {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    background: transparent;
+    border: 1px solid rgba(244,237,224,0.28);
+    color: rgba(244,237,224,0.55);
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+  }
+  .btn-open-atelier:hover { border-color: rgba(244,237,224,0.7); color: rgba(244,237,224,0.9); }
+  .cta-items { display: flex; flex-direction: column; gap: 2px; }
+  .cta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: rgba(244,237,224,0.1);
+    border: 0.5px solid rgba(244,237,224,0.18);
+    gap: 16px;
+  }
+  .cta-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--paper);
+  }
+  .cta-item-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(244,237,224,0.85);
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+  }
+
+  /* ========== LANDING RESPONSIVE ========== */
+  /* ========== GEMINI VISUAL STUDIO ========== */
+  .landing-gemini {
+    background: #1a1610;
+    padding: 100px 7vw;
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid rgba(196,184,158,0.05);
+  }
+  .gemini-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.7fr;
+    gap: 60px;
+    align-items: start;
+    margin-top: 56px;
+  }
+  .gemini-controls { position: sticky; top: 32px; }
+  .gemini-field-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(196,184,158,0.35);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .gemini-api-input {
+    width: 100%;
+    background: rgba(244,237,224,0.03);
+    border: none;
+    border-bottom: 1px solid rgba(196,184,158,0.18);
+    color: rgba(196,184,158,0.65);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 10px 2px;
+    outline: none;
+    margin-bottom: 20px;
+  }
+  .gemini-api-input::placeholder { color: rgba(196,184,158,0.2); }
+  .gemini-desc-input {
+    width: 100%;
+    background: rgba(244,237,224,0.03);
+    border: 1px solid rgba(196,184,158,0.12);
+    color: rgba(244,237,224,0.8);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.6;
+    padding: 16px 18px;
+    resize: none;
+    outline: none;
+    min-height: 110px;
+    transition: border-color 0.2s;
+    margin-bottom: 6px;
+  }
+  .gemini-desc-input::placeholder { color: rgba(244,237,224,0.18); }
+  .gemini-desc-input:focus { border-color: rgba(196,184,158,0.3); }
+  .gemini-sync-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    color: rgba(196,184,158,0.25);
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .gemini-sync-hint:hover { color: rgba(196,184,158,0.55); }
+  .gemini-garment-btns {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 14px;
+  }
+  .btn-gemini-garment {
+    flex: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 10px 6px;
+    background: rgba(244,237,224,0.04);
+    border: 0.5px solid rgba(196,184,158,0.15);
+    color: rgba(196,184,158,0.45);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-gemini-garment:hover,
+  .btn-gemini-garment.active { border-color: var(--accent); color: var(--accent); background: rgba(184,71,43,0.07); }
+  .btn-gemini-all {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    background: rgba(184,71,43,0.15);
+    border: 1px solid rgba(184,71,43,0.4);
+    color: rgba(184,71,43,0.9);
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+  .btn-gemini-all:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+  .btn-gemini-all:disabled { opacity: 0.35; cursor: not-allowed; }
+  .gemini-quality-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .gemini-quality-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 7px 12px;
+    border: 0.5px solid rgba(196,184,158,0.15);
+    background: transparent;
+    color: rgba(196,184,158,0.4);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .gemini-quality-btn.active { border-color: rgba(196,184,158,0.5); color: rgba(196,184,158,0.8); }
+  .gemini-result-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(196,184,158,0.06);
+    min-height: 340px;
+  }
+  .gemini-slot {
+    background: #1a1610;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 3/4;
+  }
+  .gemini-slot-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .gemini-slot-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 8px 12px;
+    background: linear-gradient(to top, rgba(6,4,2,0.9) 0%, transparent 100%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(196,184,158,0.5);
+  }
+  .gemini-slot-empty {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(196,184,158,0.22);
+    text-align: center;
+    padding: 20px;
+    gap: 10px;
+  }
+  .gemini-slot-empty .slot-icon {
+    width: 36px; height: 36px;
+    border: 0.5px solid rgba(196,184,158,0.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .gemini-slot-empty .slot-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .gemini-slot-loading {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .gemini-spinner {
+    width: 28px; height: 28px;
+    border: 1.5px solid rgba(184,71,43,0.2);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .gemini-slot-loading span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(184,71,43,0.6);
+  }
+  .gemini-slot-error {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    color: rgba(184,71,43,0.55);
+    text-align: center;
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+  }
+  .gemini-download-row {
+    display: flex;
+    gap: 2px;
+    background: rgba(196,184,158,0.06);
+    margin-top: 2px;
+  }
+  .btn-gemini-dl {
+    flex: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 9px 6px;
+    background: transparent;
+    border: none;
+    color: rgba(196,184,158,0.3);
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .btn-gemini-dl:hover:not(:disabled) { color: rgba(196,184,158,0.7); }
+  .btn-gemini-dl:disabled { opacity: 0.2; cursor: not-allowed; }
+
+  @media (max-width: 1000px) {
+    .landing-hero { grid-template-columns: 1fr; min-height: auto; padding: 70px 6vw 60px; }
+    .hero-medallion-wrap { width: 280px; height: 280px; margin: 0 auto; }
+    .concept-prices-strip { grid-template-columns: 1fr; }
+    .bridge-layout { grid-template-columns: 1fr; }
+    .concept-grid { grid-template-columns: 1fr; }
+    .how-steps { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .studio-inner { grid-template-columns: 1fr; gap: 40px; }
+    .studio-prompt-area { position: static; }
+    .gemini-inner { grid-template-columns: 1fr; gap: 40px; }
+    .gemini-controls { position: static; }
+    .gemini-result-grid { grid-template-columns: repeat(3, 1fr); }
+    .impact-grid { grid-template-columns: 1fr; }
+    .cta-inner { grid-template-columns: 1fr; }
+    .section-intro-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+  @media (max-width: 600px) {
+    .how-steps { grid-template-columns: 1fr; }
+    .studio-mockups { grid-template-columns: 1fr; }
+    .gemini-result-grid { grid-template-columns: 1fr; }
+    .landing-hero, .landing-concept, .landing-how, .landing-studio, .landing-gemini,
+    .landing-impact, .landing-cta { padding: 64px 5vw; }
+  }
 </style>
 </head>
 <body>
-<div class="frame">
+<!-- ================================================================ -->
+<!-- LANDING SECTIONS                                                 -->
+<!-- ================================================================ -->
+<div class="landing">
+
+  <!-- HERO -->
+  <section class="landing-hero" id="landing-hero">
+    <div>
+      <div class="hero-eyebrow">Second-Life Couture · Atelier No. 03 · Lviv</div>
+      <h1 class="hero-headline">A wardrobe is<br>an archive. We<br>print its <em>memory.</em></h1>
+      <p class="hero-body">Every garment carries its past — the maker's hand, the journeys, the years of wear. We encode that story into a 3D-printed medallion: beautiful to the eye, machine-readable, permanent.</p>
+      <div class="hero-actions">
+        <a href="#landing-studio" class="btn-hero-primary" onclick="document.getElementById('landing-studio').scrollIntoView({behavior:'smooth'});return false;">Design your medallion</a>
+        <a href="#atelier-tool" class="btn-hero-ghost" onclick="document.getElementById('atelier-tool').scrollIntoView({behavior:'smooth'});return false;">Open atelier tool →</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-medallion-wrap">
+        <svg id="hero-medallion" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="hbg" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#1f1810"/><stop offset="100%" stop-color="#080604"/>
+            </radialGradient>
+          </defs>
+          <circle cx="200" cy="200" r="190" fill="url(#hbg)" stroke="#2e2418" stroke-width="1"/>
+          <g id="hero-ring-outer" style="transform-origin:200px 200px">
+            <circle cx="200" cy="200" r="176" fill="none" stroke="#b8472b" stroke-width="0.7" stroke-dasharray="3,9"/>
+            <g id="hero-ticks"></g>
+          </g>
+          <circle cx="200" cy="200" r="156" fill="none" stroke="#2e2418" stroke-width="1"/>
+          <g id="hero-ring-inner" style="transform-origin:200px 200px">
+            <circle cx="200" cy="200" r="139" fill="none" stroke="#6a4030" stroke-width="0.5" stroke-dasharray="2,14"/>
+          </g>
+          <g id="hero-radials" opacity="0.3"></g>
+          <circle cx="200" cy="200" r="82" fill="#110e08" stroke="#3a2a14" stroke-width="1.5"/>
+          <circle cx="200" cy="200" r="74" fill="none" stroke="#2a1e0e" stroke-width="0.5"/>
+          <!-- Eye symbol -->
+          <ellipse cx="200" cy="200" rx="34" ry="20" fill="none" stroke="#c8a060" stroke-width="1.3"/>
+          <circle cx="200" cy="200" r="10" fill="#b8472b"/>
+          <circle cx="200" cy="200" r="5" fill="#060402"/>
+          <circle cx="204" cy="197" r="2.2" fill="#d4a574" opacity="0.65"/>
+          <path d="M 180 200 Q 200 183 220 200" fill="none" stroke="#c8a060" stroke-width="0.7" opacity="0.4"/>
+          <path d="M 180 200 Q 200 217 220 200" fill="none" stroke="#c8a060" stroke-width="0.7" opacity="0.4"/>
+          <g id="hero-codec-dots" opacity="0.65"></g>
+          <text x="200" y="372" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="3" fill="#3a2e1e">PATTERN CODEC · TZ 3.0</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCEPT SHOWCASE -->
+  <section class="landing-concept" id="landing-concept">
+    <div class="section-intro-grid">
+      <div>
+        <span class="section-eyebrow">02 · Concept</span>
+        <h2 class="section-title">Three garments.<br>One language.</h2>
+      </div>
+      <p class="section-desc">Each item receives a medallion positioned to its character — the T-shirt carries its story on the chest, shorts at the hem, sneakers at the heel counter.</p>
+    </div>
+    <div class="concept-full-wrap">
+      <img
+        src="https://raw.githubusercontent.com/IL-RY-byte/Pattern-Provenance/d766e9887ea629423c16a7ada118c125c9ff4c95/concept-garments.jpg"
+        alt="Second-Life Couture — T-shirt, Shorts and Sneakers with Pattern Codec medallions">
+    </div>
+    <div class="concept-prices-strip">
+      <div class="concept-price-item">
+        <div><div class="cpi-name">T-shirt</div><div class="cpi-tag">Organic cotton · left chest · 32 mm</div></div>
+        <div class="cpi-price">from €29</div>
+      </div>
+      <div class="concept-price-item">
+        <div><div class="cpi-name">Shorts</div><div class="cpi-tag">Linen blend · left hem · 30 mm</div></div>
+        <div class="cpi-price">from €32</div>
+      </div>
+      <div class="concept-price-item">
+        <div><div class="cpi-name">Sneakers</div><div class="cpi-tag">Upcycled leather · heel tab · 28 mm</div></div>
+        <div class="cpi-price">from €39</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="landing-how" id="landing-how">
+    <div class="section-intro-grid">
+      <div>
+        <span class="section-eyebrow">03 · Process</span>
+        <h2 class="section-title">From discarded<br>weight to living<br>archive.</h2>
+      </div>
+      <p class="section-desc">Four steps transform a second-hand garment into a tracked, traceable object with a scannable identity that outlasts the tag.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-ghost">i</div>
+        <div class="how-step-label">Step 01</div>
+        <h3>Source<br>by weight</h3>
+        <p>Garments sourced from certified surplus warehouses at €2–4 /kg. Each piece inspected for structural integrity; distressed fabric accepted at lower grade.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-ghost">ii</div>
+        <div class="how-step-label">Step 02</div>
+        <h3>Design the<br>medallion</h3>
+        <p>Customer describes a motif. Claude structures it into a 7-parameter JSON spec. A deterministic SVG renderer builds the codec medallion in real time.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-ghost">iii</div>
+        <div class="how-step-label">Step 03</div>
+        <h3>Print on<br>J850</h3>
+        <p>PolyJet J850 or TPU FDM. 30 mm tile, ~1.2 g material. Reed-Solomon parity ensures the codec survives 40 % surface wear before read degrades.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-ghost">iv</div>
+        <div class="how-step-label">Step 04</div>
+        <h3>QR passport<br>activated</h3>
+        <p>First scan activates the garment's digital passport: provenance chain, repair log, ownership history. Immutable, open, linkable to resale platforms.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GEMINI VISUAL STUDIO -->
+  <section class="landing-gemini" id="landing-gemini">
+    <span class="studio-section-eyebrow">04 · Visual Studio</span>
+    <h2 class="studio-section-title">Generate <em>garment visuals</em> with Gemini.</h2>
+    <p class="studio-section-desc">Describe your design — or sync from Claude above — and Gemini renders photorealistic images of each garment with the print already applied. T-shirt, shorts, sneakers generated in parallel.</p>
+    <div class="gemini-inner">
+
+      <!-- Controls -->
+      <div class="gemini-controls">
+        <span class="gemini-field-label">Google Gemini API Key</span>
+        <input type="password" class="gemini-api-input" id="gemini-api-key" placeholder="AIzaSy…">
+
+        <span class="gemini-field-label">Design description</span>
+        <textarea class="gemini-desc-input" id="gemini-desc" rows="4"
+          placeholder="e.g. moon phases and ocean waves, silver and midnight blue medallion"></textarea>
+
+        <span class="gemini-field-label" style="margin-top:4px;">Style preset</span>
+        <div class="gemini-quality-row">
+          <button class="gemini-quality-btn active" data-style="editorial">Editorial</button>
+          <button class="gemini-quality-btn" data-style="flatlay">Flat lay</button>
+          <button class="gemini-quality-btn" data-style="wornby">Worn</button>
+        </div>
+
+        <span class="gemini-field-label">Generate</span>
+        <div class="gemini-garment-btns">
+          <button class="btn-gemini-garment" data-garment="tshirt">T-shirt</button>
+          <button class="btn-gemini-garment" data-garment="shorts">Shorts</button>
+          <button class="btn-gemini-garment" data-garment="sneakers">Sneakers</button>
+        </div>
+        <button class="btn-gemini-all" id="btn-gemini-all">Generate all three</button>
+
+        <span class="gemini-field-label" style="margin-top:4px;">Model</span>
+        <div class="gemini-quality-row" style="flex-wrap:wrap;">
+          <button class="gemini-quality-btn active" data-model="gemini-2.5-flash">Flash 2.0 exp</button>
+          <button class="gemini-quality-btn" data-model="imagen-3.0-generate-002">Imagen 3</button>
+        </div>
+
+        <p style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:0.14em;color:rgba(196,184,158,0.18);line-height:1.7;">
+          Flash 2.0 exp: free tier · Imagen 3: needs paid key
+        </p>
+      </div>
+      
+
+      <!-- Results -->
+      <div>
+        <div class="gemini-result-grid" id="gemini-result-grid">
+          <div class="gemini-slot" id="gemini-slot-tshirt">
+            <div class="gemini-slot-empty">
+              <div class="slot-icon">👕</div>
+              <div class="slot-name">T-shirt</div>
+            </div>
+          </div>
+          <div class="gemini-slot" id="gemini-slot-shorts">
+            <div class="gemini-slot-empty">
+              <div class="slot-icon">🩳</div>
+              <div class="slot-name">Shorts</div>
+            </div>
+          </div>
+          <div class="gemini-slot" id="gemini-slot-sneakers">
+            <div class="gemini-slot-empty">
+              <div class="slot-icon">👟</div>
+              <div class="slot-name">Sneakers</div>
+            </div>
+          </div>
+        </div>
+        <div class="gemini-download-row">
+          <button class="btn-gemini-dl" id="gdl-tshirt" disabled onclick="geminiDownload('tshirt')">↓ T-shirt</button>
+          <button class="btn-gemini-dl" id="gdl-shorts" disabled onclick="geminiDownload('shorts')">↓ Shorts</button>
+          <button class="btn-gemini-dl" id="gdl-sneakers" disabled onclick="geminiDownload('sneakers')">↓ Sneakers</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- IMPACT METRICS -->
+  <section class="landing-impact" id="landing-impact">
+    <div class="section-intro-grid">
+      <div>
+        <span class="section-eyebrow">05 · Impact</span>
+        <h2 class="section-title">The archive<br>has a conscience.</h2>
+      </div>
+      <p class="section-desc">Every garment with a Pattern Codec medallion enters a circular economy. These are the numbers, per garment, per year of extended life.</p>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-cell" data-ghost="①">
+        <div class="impact-val"><em>21.4</em> kg</div>
+        <div class="impact-unit">CO₂ equivalent saved</div>
+        <p class="impact-desc">Versus producing a new equivalent garment from virgin materials. Accounts for transport and print energy.</p>
+      </div>
+      <div class="impact-cell" data-ghost="②">
+        <div class="impact-val"><em>7,500</em> L</div>
+        <div class="impact-unit">Water not consumed</div>
+        <p class="impact-desc">A conventional cotton T-shirt requires ~2,700 L to produce. Our medallion re-activates rather than replaces.</p>
+      </div>
+      <div class="impact-cell" data-ghost="③">
+        <div class="impact-val"><em>+5–7</em> yrs</div>
+        <div class="impact-unit">Extended garment life</div>
+        <p class="impact-desc">Tracked ownership and documented provenance correlates with significantly longer garment retention in European resale data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRIDGE → ATELIER -->
+  <section class="landing-bridge" id="landing-cta">
+    <div class="bridge-layout">
+      <div>
+        <span class="section-eyebrow">06 · Reserve</span>
+        <h2 class="bridge-headline">First 200 medallions<br>hand-finished in Lviv.<br>From €29.</h2>
+        <p class="bridge-sub">Spring 2026. Every order includes a digital passport, printed medallion, and stitching guide. Design yours below in the atelier tool.</p>
+        <div class="bridge-btns">
+          <button class="btn-hero-primary" onclick="alert('Write to hello@secondlifecouture.com')">Join the waitlist</button>
+          <button class="btn-hero-ghost" onclick="document.getElementById('atelier-tool').scrollIntoView({behavior:'smooth'})">Open atelier →</button>
+        </div>
+      </div>
+      <div class="bridge-price-list">
+        <div class="bridge-price-row"><span class="bridge-price-row-name">T-shirt</span><span class="bridge-price-row-price">from €29</span></div>
+        <div class="bridge-price-row"><span class="bridge-price-row-name">Shorts</span><span class="bridge-price-row-price">from €32</span></div>
+        <div class="bridge-price-row"><span class="bridge-price-row-name">Sneakers</span><span class="bridge-price-row-price">from €39</span></div>
+        <div class="bridge-price-row" style="border-color:var(--rule);opacity:0.7;">
+          <span class="bridge-price-row-name" style="font-family:'JetBrains Mono',monospace;font-style:normal;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;">Digital passport</span>
+          <span class="bridge-price-row-price" style="color:var(--ink-faint);">Included</span>
+        </div>
+      </div>
+    </div>
+    <!-- Atelier entry bar -->
+    <div class="bridge-atelier-bar">
+      <div class="bridge-atelier-left">
+        <span class="bridge-atelier-eyebrow">Atelier · Pattern &amp; Provenance</span>
+        <span class="bridge-atelier-name">Design, encode, scan &amp; order</span>
+      </div>
+      <span class="bridge-atelier-arrow">↓ scroll to begin</span>
+    </div>
+  </section>
+
+</div><!-- end .landing -->
+
+<div class="frame" id="atelier-tool" style="padding-top:0; border-top: none;">
 
   <!-- MASTHEAD -->
   <header class="masthead">
@@ -1700,17 +2994,70 @@
       <button class="btn" id="btn-order-reset">Reset</button>
     </div>
 
-    <!-- 3D PRINT SPECIFICATION CARD -->
-    
     <div class="order-summary">
       <div>
         <h3>Atelier dispatch</h3>
         <p id="order-narrative">An identifier has been minted. When you're ready, generate the STL, send it to the print service, and stitch the resulting tile to your garment. The first scan activates the registry entry — and from then on, the pattern is the provenance.</p>
       </div>
       <div class="figures">
+        <div class="fig"><strong>Tile</strong><span class="v">30 mm Ø</span></div>
+        <div class="fig"><strong>Profile</strong><span class="v">2.5 mm tall</span></div>
+        <div class="fig"><strong>Material</strong><span class="v">TPU 95A</span></div>
+        <div class="fig"><strong>Mass</strong><span class="v">~1.2 g</span></div>
+        <div class="fig"><strong>Lead time</strong><span class="v">3–5 days</span></div>
+        <div class="fig"><strong>Cost</strong><span class="v">€18 incl.</span></div>
       </div>
     </div>
 
+    <!-- 3D PRINT SPECIFICATION CARD -->
+    <div class="print-spec">
+      <div class="print-spec-header">
+        <h3>Manufacturing notes</h3>
+        <span class="print-spec-tag">FDM · TPU 95A · 0.4 mm nozzle</span>
+      </div>
+      <div class="print-spec-grid">
+        <div class="print-spec-block">
+          <div class="ps-label">Geometry</div>
+          <div class="ps-row"><span>Diameter</span><strong>30 mm</strong></div>
+          <div class="ps-row"><span>Base thickness</span><strong>1.5 mm</strong></div>
+          <div class="ps-row"><span>Total profile</span><strong>2.5 mm</strong></div>
+          <div class="ps-row"><span>Relief range</span><strong>0.4 – 1.0 mm</strong></div>
+          <div class="ps-row"><span>Engraving depth</span><strong>0.7 mm</strong></div>
+          <div class="ps-row"><span>RS rim markers</span><strong>32 × Ø 1.2 mm</strong></div>
+        </div>
+        <div class="print-spec-block">
+          <div class="ps-label">Print settings</div>
+          <div class="ps-row"><span>Layer height</span><strong>0.20 mm</strong></div>
+          <div class="ps-row"><span>Wall count</span><strong>3</strong></div>
+          <div class="ps-row"><span>Top/bottom layers</span><strong>4 / 4</strong></div>
+          <div class="ps-row"><span>Infill</span><strong>30% gyroid</strong></div>
+          <div class="ps-row"><span>Supports</span><strong>not required</strong></div>
+          <div class="ps-row"><span>Print time</span><strong>~14 min</strong></div>
+        </div>
+        <div class="print-spec-block">
+          <div class="ps-label">Material &amp; durability</div>
+          <div class="ps-row"><span>Filament</span><strong>TPU 95A · cream</strong></div>
+          <div class="ps-row"><span>Shore hardness</span><strong>95A (semi-rigid)</strong></div>
+          <div class="ps-row"><span>Bend radius</span><strong>5 mm safe</strong></div>
+          <div class="ps-row"><span>Wash cycles</span><strong>200+ at 30 °C</strong></div>
+          <div class="ps-row"><span>UV resistance</span><strong>good (interior)</strong></div>
+          <div class="ps-row"><span>Iron resistance</span><strong>up to 110 °C</strong></div>
+        </div>
+        <div class="print-spec-block">
+          <div class="ps-label">Stitching guide</div>
+          <div class="ps-row"><span>Anchor points</span><strong>4 corners</strong></div>
+          <div class="ps-row"><span>Thread</span><strong>waxed linen, ~0.4 mm</strong></div>
+          <div class="ps-row"><span>Stitch type</span><strong>cross or whip</strong></div>
+          <div class="ps-row"><span>Holes</span><strong>pre-pierce with awl</strong></div>
+          <div class="ps-row"><span>Position on garment</span><strong>flat panel, low-flex</strong></div>
+          <div class="ps-row"><span>Avoid</span><strong>seam crossings</strong></div>
+        </div>
+      </div>
+      <p class="print-spec-footer">
+        These specifications produce a tile that is comfortable against skin, safe for normal laundry, and reads under raking light at arm's length. The codec was designed around what TPU 95A can actually print at 0.4&nbsp;mm nozzle resolution — every dimension is at least 1.5× the minimum feature size, and no layer exceeds 0.2&nbsp;mm of overhang without support.
+      </p>
+    </div>
+  </section>
 
 </div>
 
@@ -4750,6 +6097,438 @@ function updateGarmentMockup() {
 
 
 // ============================================================================
+// LANDING — Hero Medallion Animation
+// ============================================================================
+function initHeroMedallion() {
+  const ticksEl = document.getElementById('hero-ticks');
+  const radialEl = document.getElementById('hero-radials');
+  const dotsEl   = document.getElementById('hero-codec-dots');
+  if (!ticksEl) return;
+  const NS = 'http://www.w3.org/2000/svg';
+  const CX = 200, CY = 200;
+
+  // 72 tick marks on outer ring
+  for (let i = 0; i < 72; i++) {
+    const a = (i / 72) * 2 * Math.PI;
+    const major = i % 6 === 0;
+    const r1 = 176, r2 = 176 - (major ? 12 : 5);
+    const ln = document.createElementNS(NS, 'line');
+    ln.setAttribute('x1', (CX + r1 * Math.cos(a)).toFixed(1));
+    ln.setAttribute('y1', (CY + r1 * Math.sin(a)).toFixed(1));
+    ln.setAttribute('x2', (CX + r2 * Math.cos(a)).toFixed(1));
+    ln.setAttribute('y2', (CY + r2 * Math.sin(a)).toFixed(1));
+    ln.setAttribute('stroke', major ? '#b8472b' : '#3e3020');
+    ln.setAttribute('stroke-width', major ? '1.2' : '0.6');
+    ticksEl.appendChild(ln);
+  }
+
+  // 16 radial lines between inner band and center
+  for (let i = 0; i < 16; i++) {
+    const a = (i / 16) * 2 * Math.PI;
+    const ln = document.createElementNS(NS, 'line');
+    ln.setAttribute('x1', (CX + 86 * Math.cos(a)).toFixed(1));
+    ln.setAttribute('y1', (CY + 86 * Math.sin(a)).toFixed(1));
+    ln.setAttribute('x2', (CX + 150 * Math.cos(a)).toFixed(1));
+    ln.setAttribute('y2', (CY + 150 * Math.sin(a)).toFixed(1));
+    ln.setAttribute('stroke', '#2e2418');
+    ln.setAttribute('stroke-width', '0.5');
+    radialEl.appendChild(ln);
+  }
+
+  // 32 codec dots on the mid ring
+  const rng = [1,0,1,1,0,1,0,0,1,1,0,1,1,0,0,1,0,1,1,0,1,0,1,1,0,0,1,0,1,1,0,1];
+  for (let i = 0; i < 32; i++) {
+    const a = (i / 32) * 2 * Math.PI - Math.PI / 2;
+    const r = 109;
+    const c = document.createElementNS(NS, 'circle');
+    c.setAttribute('cx', (CX + r * Math.cos(a)).toFixed(1));
+    c.setAttribute('cy', (CY + r * Math.sin(a)).toFixed(1));
+    c.setAttribute('r', i % 4 === 0 ? '3.5' : '2');
+    c.setAttribute('fill', rng[i] ? '#b8472b' : 'none');
+    c.setAttribute('stroke', '#b8472b');
+    c.setAttribute('stroke-width', '0.6');
+    dotsEl.appendChild(c);
+  }
+
+  // Animate
+  let a1 = 0, a2 = 0;
+  const outerRing = document.getElementById('hero-ring-outer');
+  const innerRing = document.getElementById('hero-ring-inner');
+  (function tick() {
+    a1 += 0.06; a2 -= 0.04;
+    if (outerRing) outerRing.style.transform = `rotate(${a1}deg)`;
+    if (innerRing) innerRing.style.transform = `rotate(${a2}deg)`;
+    requestAnimationFrame(tick);
+  })();
+}
+
+// ============================================================================
+// LANDING — Design Studio (Anthropic API)
+// ============================================================================
+const STUDIO_SYSTEM = `You are a decorative design assistant for a luxury upcycled garment brand.
+When given a design description, respond with ONLY a valid JSON object (no markdown, no preamble) with exactly these fields:
+{
+  "name": "Short poetic design name (3-5 words)",
+  "centerSymbol": "one of: eye, sun, moon, flame, leaf, star, wave",
+  "motifs": ["3 to 5 decorative element names"],
+  "palette": ["3 or 4 hex color strings, dark rich tones preferred"],
+  "complexity": <integer 8 to 24, number of radial segments>,
+  "narrative": "One evocative sentence (max 18 words)",
+  "reliefDepth": <float 0.5 to 2.0>
+}`;
+
+async function callClaude(prompt, apiKey) {
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-5',
+      max_tokens: 512,
+      system: STUDIO_SYSTEM,
+      messages: [{ role: 'user', content: prompt }]
+    })
+  });
+  if (!res.ok) {
+    const e = await res.json().catch(() => ({}));
+    throw new Error(e.error?.message || `HTTP ${res.status}`);
+  }
+  const data = await res.json();
+  const raw = data.content[0].text.trim();
+  const m = raw.match(/\{[\s\S]*\}/);
+  if (!m) throw new Error('No JSON found in response');
+  return JSON.parse(m[0]);
+}
+
+function buildMedallionSVG(d, size) {
+  const sz = size || 200;
+  const cx = sz / 2, cy = sz / 2, R = sz * 0.44;
+  const pal = d.palette && d.palette.length ? d.palette : ['#1a1208','#b8472b','#c8a060','#4a3522'];
+  const p0 = pal[0], p1 = pal[1] || '#b8472b', p2 = pal[2] || '#c8a060';
+  const n = Math.max(8, Math.min(24, d.complexity || 12));
+
+  // Radial segments + dots
+  let segs = '';
+  for (let i = 0; i < n; i++) {
+    const a = (i / n) * 2 * Math.PI - Math.PI / 2;
+    const ca = Math.cos(a), sa = Math.sin(a);
+    const major = i % 3 === 0;
+    segs += `<line x1="${(cx+R*0.53*ca).toFixed(1)}" y1="${(cy+R*0.53*sa).toFixed(1)}"
+      x2="${(cx+R*0.87*ca).toFixed(1)}" y2="${(cy+R*0.87*sa).toFixed(1)}"
+      stroke="${major ? p1 : p2}" stroke-width="${major ? 0.9 : 0.5}" opacity="${major ? 0.85 : 0.4}"/>`;
+    segs += `<circle cx="${(cx+R*0.93*ca).toFixed(1)}" cy="${(cy+R*0.93*sa).toFixed(1)}"
+      r="${major ? 2.4 : 1.1}" fill="${major ? p1 : p2}" opacity="${major ? 0.9 : 0.5}"/>`;
+  }
+
+  // Center symbol
+  const sym = d.centerSymbol || 'eye';
+  const symMap = {
+    eye: `<ellipse cx="${cx}" cy="${cy}" rx="${R*0.27}" ry="${R*0.16}" fill="none" stroke="${p2}" stroke-width="1.2"/>
+          <circle cx="${cx}" cy="${cy}" r="${R*0.09}" fill="${p1}"/>
+          <circle cx="${cx}" cy="${cy}" r="${R*0.04}" fill="${p0}"/>
+          <circle cx="${cx+R*0.025}" cy="${cy-R*0.02}" r="${R*0.015}" fill="${p2}" opacity="0.6"/>`,
+    sun: `<circle cx="${cx}" cy="${cy}" r="${R*0.12}" fill="${p2}" opacity="0.9"/>
+          ${Array.from({length:8},(_,i)=>{const a=i/8*2*Math.PI;return `<line x1="${(cx+R*0.16*Math.cos(a)).toFixed(1)}" y1="${(cy+R*0.16*Math.sin(a)).toFixed(1)}" x2="${(cx+R*0.24*Math.cos(a)).toFixed(1)}" y2="${(cy+R*0.24*Math.sin(a)).toFixed(1)}" stroke="${p2}" stroke-width="1.1"/>`}).join('')}`,
+    moon: `<path d="M${cx+R*0.05} ${cy-R*0.2}A${R*0.21} ${R*0.21} 0 1 0 ${cx+R*0.05} ${cy+R*0.2}A${R*0.13} ${R*0.17} 0 1 1 ${cx+R*0.05} ${cy-R*0.2}" fill="${p2}" opacity="0.85"/>`,
+    flame: `<path d="M${cx} ${cy-R*0.24}Q${cx+R*0.14} ${cy-R*0.04} ${cx+R*0.09} ${cy+R*0.14}Q${cx} ${cy+R*0.22} ${cx-R*0.09} ${cy+R*0.14}Q${cx-R*0.14} ${cy-R*0.04} ${cx} ${cy-R*0.24}" fill="${p1}" opacity="0.9"/>
+             <ellipse cx="${cx}" cy="${cy+R*0.05}" rx="${R*0.06}" ry="${R*0.08}" fill="${p0}"/>`,
+    leaf: `<path d="M${cx} ${cy-R*0.22}Q${cx+R*0.2} ${cy} ${cx} ${cy+R*0.22}Q${cx-R*0.2} ${cy} ${cx} ${cy-R*0.22}" fill="${p2}" opacity="0.8"/>
+           <line x1="${cx}" y1="${cy-R*0.22}" x2="${cx}" y2="${cy+R*0.22}" stroke="${p0}" stroke-width="0.8"/>`,
+    star: `<path d="${Array.from({length:5},(_,i)=>{const a=i/5*2*Math.PI-Math.PI/2,ai=(i+.5)/5*2*Math.PI-Math.PI/2;return `${i===0?'M':'L'}${(cx+R*0.22*Math.cos(a)).toFixed(1)} ${(cy+R*0.22*Math.sin(a)).toFixed(1)}L${(cx+R*0.1*Math.cos(ai)).toFixed(1)} ${(cy+R*0.1*Math.sin(ai)).toFixed(1)}`}).join('')}Z" fill="${p2}" stroke="${p1}" stroke-width="0.8"/>`,
+    wave: `<path d="M${cx-R*0.25} ${cy}Q${cx-R*0.11} ${cy-R*0.15} ${cx} ${cy}Q${cx+R*0.11} ${cy+R*0.15} ${cx+R*0.25} ${cy}" fill="none" stroke="${p2}" stroke-width="1.5"/>
+           <path d="M${cx-R*0.25} ${cy+R*0.09}Q${cx-R*0.11} ${cy-R*0.06} ${cx} ${cy+R*0.09}Q${cx+R*0.11} ${cy+R*0.24} ${cx+R*0.25} ${cy+R*0.09}" fill="none" stroke="${p2}" stroke-width="0.8" opacity="0.45"/>`,
+  };
+
+  return `<svg viewBox="0 0 ${sz} ${sz}" xmlns="http://www.w3.org/2000/svg">
+    <defs><radialGradient id="mbg${sz}" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2a1e10"/><stop offset="100%" stop-color="#0c0906"/>
+    </radialGradient></defs>
+    <circle cx="${cx}" cy="${cy}" r="${R}" fill="url(#mbg${sz})" stroke="${p1}" stroke-width="1.5"/>
+    <circle cx="${cx}" cy="${cy}" r="${R*0.92}" fill="none" stroke="${p2}" stroke-width="0.4" stroke-dasharray="3,7"/>
+    ${segs}
+    <circle cx="${cx}" cy="${cy}" r="${R*0.48}" fill="#0c0906" stroke="${p2}" stroke-width="0.8"/>
+    <circle cx="${cx}" cy="${cy}" r="${R*0.43}" fill="none" stroke="${p1}" stroke-width="0.4" opacity="0.4"/>
+    ${symMap[sym] || symMap.eye}
+  </svg>`;
+}
+
+function buildMockup(type, medSVG) {
+  const configs = {
+    tshirt: { label: 'T-Shirt · Left Chest', body: (m) => `
+      <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M48,22L24,54L48,62L48,174L112,174L112,62L136,54L112,22Q96,12 80,14Q64,12 48,22Z" fill="#1c1610" stroke="#282214" stroke-width="0.8"/>
+        <path d="M48,22Q64,34 80,34Q96,34 112,22" fill="none" stroke="#322c1c" stroke-width="0.6"/>
+        <g transform="translate(56,56) scale(0.27)">${m}</g>
+      </svg>` },
+    shorts: { label: 'Shorts · Left Hem', body: (m) => `
+      <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,30L30,126Q30,142 46,146L74,150L80,108L86,150L114,146Q130,142 130,126L130,30Z" fill="#1c1610" stroke="#282214" stroke-width="0.8"/>
+        <rect x="30" y="30" width="100" height="16" rx="1" fill="#140e08" stroke="#282214" stroke-width="0.6"/>
+        <line x1="80" y1="46" x2="80" y2="126" stroke="#282214" stroke-width="0.5" stroke-dasharray="2,2"/>
+        <g transform="translate(18,118) scale(0.27)">${m}</g>
+      </svg>` },
+    sneakers: { label: 'Sneakers · Heel', body: (m) => `
+      <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14,128Q28,96 60,88L94,84Q126,82 136,96L144,110Q144,128 128,132L22,132Q12,132 14,128Z" fill="#1c1610" stroke="#282214" stroke-width="0.8"/>
+        <path d="M12,130Q28,136 80,138Q130,138 146,130L146,134Q130,142 80,144Q28,142 12,134Z" fill="#100c06" stroke="#160f08" stroke-width="0.6"/>
+        <path d="M66,86Q80,76 94,86L92,108L68,108Z" fill="#160e08" stroke="#282214" stroke-width="0.5"/>
+        <g transform="translate(108,90) scale(0.27)">${m}</g>
+      </svg>` }
+  };
+  const cfg = configs[type];
+  return `<div class="studio-mockup-item">${cfg.body(medSVG)}<div class="studio-mockup-label">${cfg.label}</div></div>`;
+}
+
+function showStudioResult(design) {
+  const mainSVG = buildMedallionSVG(design, 200);
+  const swatches = (design.palette || []).map(c =>
+    `<span style="display:inline-block;width:14px;height:14px;background:${c};border:0.5px solid rgba(255,255,255,0.1);margin-right:2px;vertical-align:middle;border-radius:1px;"></span>`
+  ).join('');
+  const mockupSVG = buildMedallionSVG(design, 160);
+  const mockups = ['tshirt','shorts','sneakers'].map(t => buildMockup(t, mockupSVG)).join('');
+
+  document.getElementById('studio-result').innerHTML = `
+    <div class="studio-card">
+      <div class="studio-card-header">
+        <div class="studio-card-name">${design.name || 'Unnamed Design'}</div>
+        <div class="studio-card-badge">Complexity ×${design.complexity || '?'}</div>
+      </div>
+      <div class="studio-medallion-row">
+        <div class="studio-medallion-main">${mainSVG}</div>
+        <div class="studio-spec">
+          <div class="studio-spec-row"><span class="studio-spec-key">Symbol</span><span class="studio-spec-val">${design.centerSymbol || '—'}</span></div>
+          <div class="studio-spec-row"><span class="studio-spec-key">Motifs</span><span class="studio-spec-val">${(design.motifs || []).join(' · ')}</span></div>
+          <div class="studio-spec-row"><span class="studio-spec-key">Palette</span><span class="studio-spec-val">${swatches}</span></div>
+          <div class="studio-spec-row"><span class="studio-spec-key">Relief</span><span class="studio-spec-val">${design.reliefDepth || '1.0'} mm depth</span></div>
+        </div>
+      </div>
+      <div class="studio-narrative">${design.narrative || ''}</div>
+      <div class="studio-mockups">${mockups}</div>
+    </div>`;
+}
+
+// ============================================================================
+// GEMINI VISUAL STUDIO — Image Generation
+// ============================================================================
+
+// Stores last generated images for download
+const geminiImages = { tshirt: null, shorts: null, sneakers: null };
+
+// Last Claude design description (synced)
+let lastClaudeDesc = '';
+
+const GEMINI_GARMENT_PROMPTS = {
+  tshirt: (desc, style) => {
+    const styleMap = {
+      editorial: 'clean studio photography, model wearing it, soft diffused lighting, white background, high-end fashion editorial',
+      flatlay:   'flat lay product photography on smooth marble surface, top-down view, soft natural light, minimal shadows',
+      wornby:    'street style photography, person wearing it in urban setting, candid shot, natural daylight'
+    };
+    return `${styleMap[style] || styleMap.editorial}. White organic cotton oversized T-shirt. On the left chest area there is a small sewn-on circular 3D-printed medallion badge, approximately 30mm in diameter. The medallion features: ${desc}. The badge is slightly raised from the fabric surface, showing fine relief texture. The rest of the shirt is plain. Photorealistic, 4K detail, fashion photography.`;
+  },
+  shorts: (desc, style) => {
+    const styleMap = {
+      editorial: 'clean studio photography, model wearing them, soft diffused lighting, minimal background, fashion editorial quality',
+      flatlay:   'flat lay product photography on linen surface, top-down view, soft natural light',
+      wornby:    'street style photography, person wearing them outdoors, natural daylight, candid'
+    };
+    return `${styleMap[style] || styleMap.editorial}. Beige linen wide-leg shorts. At the bottom left hem corner there is a small circular 3D-printed medallion badge sewn to the fabric edge, approximately 30mm in diameter. The medallion features: ${desc}. Subtle relief texture on the badge. The shorts are otherwise plain. Photorealistic, high-resolution fashion photography.`;
+  },
+  sneakers: (desc, style) => {
+    const styleMap = {
+      editorial: 'studio product photography on clean concrete surface, dramatic side lighting, dark moody background',
+      flatlay:   'flat lay photography on textured paper surface, overhead shot, even soft lighting',
+      wornby:    'lifestyle photography, person walking, low angle shot showing sneakers clearly, natural outdoor light'
+    };
+    return `${styleMap[style] || styleMap.editorial}. White upcycled leather low-top sneakers. On the heel counter of each shoe there is a small circular medallion badge attached, approximately 28mm in diameter. The medallion features: ${desc}. The badge has a 3D-printed relief texture, slightly proud of the leather. Clean minimalist design. Photorealistic, luxury streetwear aesthetic, 4K.`;
+  }
+};
+
+async function callGeminiImage(prompt, apiKey, model) {
+  const isImagen = (model || '').startsWith('imagen');
+
+  if (isImagen) {
+    // Imagen 3 — uses :predict endpoint with instances/parameters format
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:predict?key=${encodeURIComponent(apiKey)}`;
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        instances: [{ prompt }],
+        parameters: { sampleCount: 1, aspectRatio: '3:4', safetySetting: 'block_only_high' }
+      })
+    });
+    if (!res.ok) {
+      const e = await res.json().catch(() => ({}));
+      throw new Error(e.error?.message || `HTTP ${res.status}`);
+    }
+    const data = await res.json();
+    const pred = data.predictions?.[0];
+    if (!pred?.bytesBase64Encoded) throw new Error('No image returned from Imagen — check your API key has Imagen access');
+    return `data:${pred.mimeType || 'image/png'};base64,${pred.bytesBase64Encoded}`;
+
+  } else {
+    // Gemini Flash exp — uses :generateContent with responseModalities
+    const mdl = model || 'gemini-2.0-flash-exp';
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${mdl}:generateContent?key=${encodeURIComponent(apiKey)}`;
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: { responseModalities: ['IMAGE', 'TEXT'] }
+      })
+    });
+    if (!res.ok) {
+      const e = await res.json().catch(() => ({}));
+      throw new Error(e.error?.message || `HTTP ${res.status}`);
+    }
+    const data = await res.json();
+    const parts = data.candidates?.[0]?.content?.parts || [];
+    const imgPart = parts.find(p => p.inlineData?.data);
+    if (!imgPart) {
+      const txt = parts.find(p => p.text)?.text || '';
+      throw new Error(txt ? `Gemini refused: ${txt.slice(0, 140)}` : 'No image in response — try rephrasing the prompt');
+    }
+    return `data:${imgPart.inlineData.mimeType};base64,${imgPart.inlineData.data}`;
+  }
+}
+
+function geminiSetSlotLoading(type) {
+  const slot = document.getElementById(`gemini-slot-${type}`);
+  if (!slot) return;
+  slot.innerHTML = `<div class="gemini-slot-loading"><div class="gemini-spinner"></div><span>Generating…</span></div>`;
+}
+
+function geminiSetSlotImage(type, dataUrl, label) {
+  const slot = document.getElementById(`gemini-slot-${type}`);
+  if (!slot) return;
+  geminiImages[type] = dataUrl;
+  slot.innerHTML = `<img class="gemini-slot-img" src="${dataUrl}" alt="${label}"><div class="gemini-slot-label">${label}</div>`;
+  const dlBtn = document.getElementById(`gdl-${type}`);
+  if (dlBtn) dlBtn.disabled = false;
+}
+
+function geminiSetSlotError(type, msg) {
+  const slot = document.getElementById(`gemini-slot-${type}`);
+  if (!slot) return;
+  slot.innerHTML = `<div class="gemini-slot-error">${msg}</div>`;
+}
+
+function geminiDownload(type) {
+  const url = geminiImages[type];
+  if (!url) return;
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `second-life-couture-${type}.png`;
+  a.click();
+}
+
+async function geminiGenerateOne(type, desc, apiKey, style, model) {
+  const labels = { tshirt: 'T-Shirt · Left Chest', shorts: 'Shorts · Left Hem', sneakers: 'Sneakers · Heel' };
+  geminiSetSlotLoading(type);
+  try {
+    const prompt = GEMINI_GARMENT_PROMPTS[type](desc, style);
+    const dataUrl = await callGeminiImage(prompt, apiKey, model);
+    geminiSetSlotImage(type, dataUrl, labels[type]);
+  } catch (err) {
+    geminiSetSlotError(type, err.message);
+  }
+}
+
+function initGeminiStudio() {
+  const allBtn   = document.getElementById('btn-gemini-all');
+  const descEl   = document.getElementById('gemini-desc');
+  const apiKeyEl = document.getElementById('gemini-api-key');
+  if (!allBtn) return;
+
+  let activeStyle = 'editorial';
+  let activeModel = 'gemini-2.0-flash-exp';
+
+  // Style preset + model toggle (both use .gemini-quality-btn)
+  document.querySelectorAll('.gemini-quality-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Determine which group this button belongs to
+      if (btn.dataset.style) {
+        btn.closest('.gemini-quality-row').querySelectorAll('.gemini-quality-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeStyle = btn.dataset.style;
+      } else if (btn.dataset.model) {
+        btn.closest('.gemini-quality-row').querySelectorAll('.gemini-quality-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeModel = btn.dataset.model;
+      }
+    });
+  });
+
+  // Single garment buttons
+  document.querySelectorAll('.btn-gemini-garment').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const desc = (descEl.value || '').trim();
+      const key  = (apiKeyEl.value || '').trim();
+      if (!desc) { descEl.focus(); return; }
+      if (!key)  { apiKeyEl.focus(); return; }
+      document.querySelectorAll('.btn-gemini-garment').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      await geminiGenerateOne(btn.dataset.garment, desc, key, activeStyle, activeModel);
+      btn.classList.remove('active');
+    });
+  });
+
+  // Generate all three in parallel
+  allBtn.addEventListener('click', async () => {
+    const desc = (descEl.value || '').trim();
+    const key  = (apiKeyEl.value || '').trim();
+    if (!desc) { descEl.focus(); return; }
+    if (!key)  { apiKeyEl.focus(); return; }
+    allBtn.disabled = true;
+    allBtn.textContent = 'Generating…';
+    await Promise.all(['tshirt','shorts','sneakers'].map(t => geminiGenerateOne(t, desc, key, activeStyle, activeModel)));
+    allBtn.disabled = false;
+    allBtn.textContent = 'Generate all three';
+  });
+
+}
+
+function initStudio() {
+  const btn    = document.getElementById('btn-studio-generate');
+  const prompt = document.getElementById('studio-prompt');
+  const apiKey = document.getElementById('studio-api-key');
+  if (!btn) return;
+
+  document.querySelectorAll('.studio-starter').forEach(s => {
+    s.addEventListener('click', () => { prompt.value = s.dataset.prompt; prompt.focus(); });
+  });
+
+  btn.addEventListener('click', async () => {
+    const p = (prompt.value || '').trim();
+    const k = (apiKey.value || '').trim();
+    if (!p) { prompt.focus(); return; }
+    if (!k) { apiKey.focus(); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Generating…';
+    document.getElementById('studio-result').innerHTML =
+      '<div class="studio-result-empty">Composing your medallion…</div>';
+
+    try {
+      const design = await callClaude(p, k);
+      showStudioResult(design);
+    } catch (err) {
+      document.getElementById('studio-result').innerHTML =
+        `<div class="studio-error">Error: ${err.message}<br><br>Check your API key and try again.</div>`;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Generate medallion';
+    }
+  });
+}
+
+// ============================================================================
 // TAB SWITCHING
 // ============================================================================
 function initTabs() {
@@ -4778,6 +6557,9 @@ function initTabs() {
 // BOOT
 // ============================================================================
 window.addEventListener('DOMContentLoaded', () => {
+  initHeroMedallion();
+  initStudio();
+  initGeminiStudio();
   initTabs();
   initMotif();
   initParametric();
@@ -4791,3 +6573,4 @@ window.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
